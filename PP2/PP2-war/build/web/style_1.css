@@ -1,0 +1,87 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30.01.2017, 0:48:47
+    Author     : Денис
+*/
+@charset "utf-8";
+
+#content {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 350px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+#main { background: #eee }
+
+#header {
+    height:200px;
+    background: #aaa;
+}
+
+.footer {
+    height:40px;
+    clear: left;
+    background: #aaa;
+}
+.otp {
+    color: "#FF0000";
+    margin-left: 10;
+    font-size: 4;
+    font-family: Arial, Helvetica, sans-serif;
+      
+}
+.btn {
+         color: red;
+          margin-left: 40px;
+}
+.rasp {
+   float: left;
+   width: 150px;
+   background: gray;
+   color: red;
+   height:150px;
+   margin-left: 120px;
+   left: 120px;
+	    	    }
+                    a {
+    text-decoration: none;
+    color: white;
+}
+.main {
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+    height: 500px;
+    text-align: center;
+}
+
+.page_name {
+    text-align: center;
+    display:inline-block;
+    font-size: large;
+    border-bottom-left-radius: 100px 25px;
+    border-bottom-right-radius: 100px 25px;
+    height: 23x;
+    color: white;
+    background-color: #ff6600;
+    width: 35%;
+}
+.page_name .a {
+    width: 27%;
+    float: none;
+    display:inline-block;
+    text-align: center;
+    font-size: 90%;  
+    font-style: italic;
+}
+.page_name .a1 {
+    width: 1%;
+    float: none;
+    display:inline-block;
+    text-align: center;
+}

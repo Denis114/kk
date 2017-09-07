@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            Созание новой заявки
+        </ui:define>
+        <ui:define name="content">
+            <div class='panel'>
+                <div class='inline in_main'>
+                    <h:form>
+                        <h:outputText value="Выберете услугу:"/><br/><br/>
+                        <h:selectOneMenu value="#{zayvkasBean.newZayvka.idUslugi}">
+                            <f:selectItems value="#{uslugasBean.allUslugas}" var="usl" 
+                                           itemLabel="#{usl.name}" itemValue="#{usl.usligaId}" />
+                        </h:selectOneMenu>
+                        <br/><br/>
+                        <h:outputText value="Дата заявки"/>
+                        <p:calendar navigator="true" value="#{zayvkasBean.newZayvka.data}" />
+                        <br/><br/>
+                       
+                        <p:commandButton action="#{zayvkasBean.addZayvka()}" title="View" value="Подать заявку">
+                        </p:commandButton>
+                      
+                         <input type="button" onclick="history.back();" value="Назад"/>
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>

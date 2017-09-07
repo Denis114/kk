@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+                 <h:form>
+            <table border="1" width="100%">
+                
+                 
+                         <c:if test="#{request.remoteUser != null}"> 
+                         <tr>  
+                    <th width= "80%" colspan="6">Страховое агенство</th>
+                    <th width= "20%"><h:commandLink action="#{accountBean.logout()}" style="text-decoration: none; color: red" value="Выход"/> </th>
+                    <th width= "20%"> Здравствуйте, <h:outputLabel value='#{request.userPrincipal.name}' style="color: #ff6600; font-size: 115%"/></th>
+                    <th width= "40%"><h:outputLabel value='#{accountBean.rolename}' style="color: #ff6600; font-size: 115%"/></th>
+                         </tr>                              
+                         //  </c:if> 
+           <c:if test="#{request.remoteUser == null}"> 
+             <tr> 
+                         <th width= "80%" colspan="6">Страховое агенство</th>
+                         <th width= "20%"> <a href="register.xhtml">Регистрация</a></th> 
+                        <th width= "20%"> <a href="login.xhtml">Вход</a></th>
+                                    </tr>
+              </c:if> 
+          
+             
+                                <tr><th colspan="8" width= "100%"><img src="images/2.jpg" width="900" height="150" alt="2"/>
+                    </th>
+                </tr>
+                <div class="main">
+                    <div class="page_name">
+                        <nav> 
+                            <c:if test="#{accountBean.rolename == null}">   
+                                <tr><td colspan="4"></td><td><a href="adminUsluga.xhtml">Услуги1</a></td>
+                                    <td><a href="adminDogovors.xhtml">Договора1</a></td>              
+                                    <td><a href="adminZayvka.xhtml">Заявки1</a></td>
+                                <td><a href="users.xhtml">Пользователи1</a></td>
+                                </tr>
+                            </c:if> 
+                            <c:if test="#{accountBean.rolename == 'Admin'}">
+                                <tr><td colspan="4"></td><td><a href="adminUsluga.xhtml">Услуги</a></td>
+                                    <td><a href="adminDogovors.xhtml">Договора</a></td>              
+                                    <td><a href="adminZayvka.xhtml">Заявки</a></td>
+                                 <td><a href="users.xhtml">Пользователи</a></td></tr>
+
+                            </c:if>
+                            <c:if test="#{accountBean.rolename== 'Agent'}">
+                                <tr><td colspan="5" ></td><td><a href="agent_clientUsluga.xhtml">Услугив</a></td>
+                                    <td><a href="agentDogovors.xhtml">Договора</a></td>              
+                                    <td><a href="agentZayvka.xhtml">Заявки</a></td>
+                                       <td><a href="infos.xhtml">Расчет</a></td>
+                                </tr>   
+                            </c:if>
+                            <c:if test="#{accountBean.rolename== 'Client'}">
+                                <tr><td colspan="5" ></td><td><a href="agent_clientUsluga.xhtml">Услугис</a></td>
+                                    <td><a href="clientDogovors.xhtml">Договора</a></td>              
+                                    <td><a href="clientZayvka.xhtml">Заявки</a></td></tr>
+                            </c:if>
+                             
+                        </nav>
+                    </div> 
+                </div>
+            </table>                    
+
+        </h:form>            
+       <br/>
+                 </h:body>
+</html>
+

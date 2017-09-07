@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="landing_name">
+            Рассчитать новую стипендию
+        </ui:define>
+        <ui:define name="content">
+            <div class='panel'>
+                <div class='inline in_main'>
+
+                    <h:form>
+                        <h:outputText value="КОД КЛИЕНТА"/><br/>
+                        <h:inputText value="#{infoBean.id_client}"/><br/><br/>
+                        <h:outputText value="КОД УСЛУГИ"/><br/>
+                        <h:inputText value="#{infoBean.id_uslugi}"/><br/><br/>
+                        <h:outputText value="ПЕРИОД ДОГОВОРА"/><br/>
+                        <h:inputText value="#{infoBean.periodDog}"/><br/><br/>
+                        <h:commandButton value="Рассчитать коэффициент" action="#{infoBean.infoCalculate2}"/>
+                    </h:form>
+                </div>
+                <div class='inline in_nav'>
+                    <div class='rightbox'>
+                        <a href='./infos.xhtml'>Список всех коэффициентов</a>
+                    </div>
+                </div></div>
+        </ui:define>
+    </ui:composition>
+</html>

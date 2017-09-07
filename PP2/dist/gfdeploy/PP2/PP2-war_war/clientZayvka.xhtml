@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h:head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            </h:head>
+            <f:view>
+                <h:body>            
+                    <div class="table"><h2>Заявки</h2> 
+                        <h:form id="form">
+                            <h:column>
+                                <h:commandButton action="addZayvka.xhtml" class="button"  value="Подать заявку"/>
+                            </h:column>
+                            <br><br></br></br>
+                            <p:dataTable value="#{zayvkasBean.zayvkas}" var="zayvka" rowKey="#{zayvka.id}"  editable="true" editMode="cell">
+                                <p:ajax event="cellEdit" listener="#{zayvkasBean.EditZayvka}"/>
+                                <p:column headerText="Клиент">      
+                                     
+                                    <h:outputText value="#{zayvka.idClient.fio}" />
+                                </p:column>
+                                <p:column headerText="Услуга">
+                                    <h:outputText value="#{zayvka.idUslugi.name}" />
+                                </p:column>
+                                <p:column headerText="Статус">      
+
+                                    <h:outputText value="#{zayvka.status}" />
+                                </p:column>
+                                <p:column headerText="Дата подачи заявки">      
+                                    <h:outputText value="#{zayvka.data}" />
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton action="#{zayvkasBean.delete()}" title="View" value="Удалить">
+                                        <f:setPropertyActionListener value="#{zayvka}" target="#{zayvkasBean.selectedZayvka}" />
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>   
+                        </h:form>
+                    </div>
+                </h:body>
+            </f:view>
+        </ui:define>
+    </ui:composition>
+</html>

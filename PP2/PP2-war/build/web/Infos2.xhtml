@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h:head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            </h:head>
+            <f:view>
+                <h:body>            
+                    <div class="table"><h2>Коэффициенты перерасчета суммы договоров</h2>
+                        <h:form id="form">
+                              <h:column>
+                                  <h:commandButton action="#{infoBean.infoCalculate2()}" class="button"  value="Пересчитать сумму договора"/>
+                            </h:column>
+                            <p:dataTable value="#{infoBean.allInfos}" var="info" rowKey="#{info.id}"  editable="true" editMode="cell">
+                                    <p:column headerText="Код Клиента">
+                                        <h:outputText value="#{info.idClient}" />
+                                </p:column>
+                                <p:column headerText="Код Услуги">
+                                    <h:outputText value="#{info.idUslugi}" />
+                                </p:column>
+                                <p:column headerText="Период">
+                                    <h:outputText value="#{info.straxPeriod}" />
+                                     </p:column>
+                                      <p:column headerText="Коэффициент">
+                                          <h:outputText value="#{info.kf1}" /> 
+                                      </p:column>
+                            </p:dataTable>   
+                        </h:form>
+                    </div>
+                </h:body>
+            </f:view>
+        </ui:define>
+    </ui:composition>
+</html>

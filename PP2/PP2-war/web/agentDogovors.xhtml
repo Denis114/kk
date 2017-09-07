@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <f:view>
+                <h:body>            
+                    <div class="table"><h2>Договора</h2> 
+                        <h:form id="form">
+                            <h:column>
+                                <h:commandButton action="newDogovor.xhtml" class="button"  value="Добавить договор"/>
+                            </h:column>
+                            <br><br></br></br>
+                            <p:dataTable value="#{dogovorsBean.dogovors}" var="dogovor" rowKey="#{dogovor.id}"  editable="true" editMode="cell">
+                                <p:ajax event="cellEdit" listener="#{dogovorsBean.onCellEdit}"/>
+                                <p:column headerText="Номер">
+                                    <h:outputText value="#{dogovor.nomer}" />
+                                </p:column>
+                                <p:column headerText="Дата">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{dogovor.dataZaklDog.toLocaleString()}" /></f:facet>
+                                        <f:facet name="input">
+                                            <p:calendar navigator="true" value="#{dogovor.dataZaklDog}" />
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Период">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{dogovor.periodDog}" /></f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{dogovor.periodDog}" />
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Услуга">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{dogovor.idUslugi.name}" /></f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{dogovor.idUslugi.name}" />
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Клиент">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{dogovor.idClient.fio}" /></f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{dogovor.idClient.fio}" />
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Стоимость">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{dogovor.stoimostDog}" /></f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{dogovor.stoimostDog}" />
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column>
+                                    <p:commandButton action="#{dogovorsBean.delete()}" title="View" value="Удалить">
+                                        <f:setPropertyActionListener value="#{dogovor}" target="#{dogovorsBean.selectedDogovor}" />
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>   
+                        </h:form>
+                    </div>
+                </h:body>
+            </f:view>
+        </ui:define>
+    </ui:composition>
+</html>

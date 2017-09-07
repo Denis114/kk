@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h:head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            </h:head>
+            <f:view>
+                <h:body>            
+                    <div class="table"><h2>Услуги</h2> 
+                        <h:form id="form">
+                            <h:column>
+                                <h:commandButton action="addUsluga.xhtml" class="button"  value="Добавить услугу"/>
+                            </h:column>
+                            <br><br></br></br>
+                            <p:dataTable value="#{uslugasBean.uslugas}" var="usluga" rowKey="#{usluga.usligaId}"  editable="true" editMode="cell">
+                                <p:ajax event="cellEdit" listener="#{uslugasBean.EditUsluga}"/>
+                                    <p:column headerText="Название">      
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{usluga.name}" /></f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{usluga.name}" />
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Цена">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{usluga.chena}" /></f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{usluga.chena}" />
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton action="#{uslugasBean.delete()}" title="View" value="Удалить">
+                                        <f:setPropertyActionListener value="#{usluga}" target="#{uslugasBean.selectedUsluga}" />
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>   
+                        </h:form>
+                    </div>
+                </h:body>
+            </f:view>
+
+        </ui:define>
+    </ui:composition>
+</html>

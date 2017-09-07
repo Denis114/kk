@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="landing_name">
+            Список всех коэффициентов для расчета стоимости договоров
+        </ui:define>
+        <ui:define name="content">
+            <div class='panel'>
+                <div class='inline in_main'>
+                    
+                    <table cellspacing='0'>
+                        <tr>
+                            <td>ID-клиента</td>
+                            <td>ID-Услуги</td>
+                            <td>Период</td>
+                            <td>Коэффициент</td>
+                        </tr>
+                        <ui:repeat var="info" value="#{infoBean.allInfo2}">
+                            <tr>
+                                <td>#{info.idClient}</td>
+                                <td>#{info.idUslugi}</td>
+                                <td>#{info.periodStrax}</td>
+                                <td>#{info.kf1}</td>
+                                <td><a href='./info-details.xhtml' class='more-link'>Подробнее</a></td>
+                            </tr>       
+                        </ui:repeat>
+                    </table>
+                    
+                </div>
+                <div class='inline in_nav'>
+                    <div class='rightbox'>
+                        <a href='./info-add.xhtml' class="add">Добавить новые коэффициенты</a>
+                    </div>
+                </div></div>
+
+
+
+        </ui:define>
+    </ui:composition>
+</html>

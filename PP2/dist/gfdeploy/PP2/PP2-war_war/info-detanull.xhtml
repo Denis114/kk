@@ -1,0 +1,75 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="landing_name">
+            <f:metadata>
+                <f:viewParam name="period" value="#{infoBean.period}" />
+                <f:viewParam name="id_client" value="#{infoBean.id_client}" />
+                <f:viewParam name="id_uslugi" value="#{infoBean.id_uslugi}" />
+            </f:metadata>   
+            Информация об изменении стоимости договоров <b>#{infoBean.period}</b> 
+        </ui:define>
+        <ui:define name="content">
+            <div class='panel'>
+                <div class='inline in_main'>
+                    <f:view>
+                        <h:body>     
+                            <h:form id="form">
+                                                             <div class="table">
+                                    <h2>Коэффициенты перерасчета суммы договоров</h2>
+                                    <p:dataTable value="#{infoBean.infoDetails1}" var="info" rowKey="#{info.id}"  editable="true" editMode="cell">
+                                        <p:column headerText="Код Клиента">
+                                            <h:outputText value="#{info.idInfo.idClient}" />
+                                        </p:column>
+                                        <p:column headerText="ФИО Клиента">
+                                            <h:outputText value="#{usersBean.getUserByID(info.idInfo.idClient)}" />
+                                        </p:column>
+                                        <p:column headerText="Код Услуги">
+                                            <h:outputText value="#{info.idInfo.idUslugi}" />
+                                        </p:column>
+                                        <p:column headerText="Название Услуги">
+                                            <h:outputText value="#{uslugasBean.getUslugaByID(info.idInfo.idUslugi)}" />
+                                        </p:column>
+                                        <p:column headerText="Страховой стаж">
+                                            <h:outputText value="#{info.idInfo.straxPeriod}" />
+                                        </p:column>
+                                        <p:column headerText="Коэффициент">
+                                            <h:outputText value="#{info.idInfo.kf1}" /> 
+                                        </p:column>
+                                        <p:column headerText="Период договора">
+                                            <h:outputText value="#{info.periodDog}" /> 
+                                        </p:column>
+                                        <p:column headerText="Сумма договора">
+                                            <h:outputText value="#{info.summa}" /> 
+                                        </p:column>
+                                        <p:column headerText="Измннная сумма">
+                                            <h:outputText value="#{info.summa2}" /> 
+                                        </p:column>
+                                        <p:column headerText="Измннная сумма">
+                                            <h:commandButton value="Рассчитать" action="#{infoBean.InfoCalculate2}"/>
+                                                </p:column>
+                                                                            </p:dataTable>  
+                                </div><br/><br/>  
+                                <div class='inline in_nav'>
+                                    <div class='rightbox'>
+                                        <a href='./infos.xhtml'>Список всех коэффициентов</a>
+                                    </div><br/><br/>  
+                                    <div class='rightbox'> 
+                                     <!--   <h:commandLink action='./info-add.xhtml' value="Добавить коэффициенты">
+                                        </h:commandLink>  -->
+                                    </div>
+                                </div><br/><br/>  
+                            </h:form>            
+                        </h:body>
+                    </f:view>
+
+                </div>
+            </div> 
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:h="http://java.sun.com/jsf/html" >
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="./Style/style.css"/>
+              </h:head>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="content">
+                <br/><br/>
+             <h2>Новая  услуги</h2>  
+                      <h:form>  
+                       <h:outputText value="Название услуги"/>
+                       <h:inputText value="#{uslugasBean.newUsluga.name}"/><br/><br/>
+                         
+                      <h:outputText value="Стоимость услуги"/>
+                      <h:inputText value="#{uslugasBean.newUsluga.chena}"/><br/><br/><br/>
+                      <h:commandButton value="Cоздать Услугу" action="#{uslugasBean.addUsluga()}"/>
+                 <!--   <a onclick="history.back()" style="text-decoration: none; color: #4F54AE"><h2>Назад</h2></a>*/  -->
+<input type="button" onclick="history.back();" value="Назад"/>
+
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+</html>

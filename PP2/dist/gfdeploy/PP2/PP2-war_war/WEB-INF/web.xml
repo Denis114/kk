@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+        <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/myBasa</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        </resource-ref>
+         <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/myDataSource</res-ref-name>
+        <res-type>javax.sql.XADataSource</res-type>
+        <res-auth>Container</res-auth>
+        </resource-ref>
+    <security-constraint>
+        <display-name>Admin</display-name>
+        <web-resource-collection>
+            <web-resource-name>Admin</web-resource-name>
+            <description/>
+            <url-pattern>/index.xhtml</url-pattern>
+            <url-pattern>/addUsluga.xhtml</url-pattern>
+            <url-pattern>/adminDogovors.xhtml</url-pattern>
+            <url-pattern>/adminUsluga.xhtml</url-pattern>
+            <url-pattern>/adminZayvka.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>Admin</role-name>
+            <role-name>Agent</role-name>
+            <role-name>Client</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>Agent</display-name>
+        <web-resource-collection>
+            <web-resource-name>Agent</web-resource-name>
+            <description/>
+            <url-pattern>/index.xhtml</url-pattern>
+            <url-pattern>/agentDogovors.xhtml</url-pattern>
+            <url-pattern>/agentZayvka.xhtml</url-pattern>
+            <url-pattern>/agent_clientUsluga.xhtml</url-pattern>
+            <url-pattern>/newDogovor.xhtml</url-pattern>
+              <url-pattern>/Infos.xhtml</url-pattern>
+                <url-pattern>/info-add.xhtml</url-pattern>
+                  <url-pattern>/info-details.xhtml</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+         <security-constraint>
+        <display-name>Client</display-name>
+        <web-resource-collection>
+            <web-resource-name>Client</web-resource-name>
+            <description/>
+            <url-pattern>/index.xhtml</url-pattern>
+            <url-pattern>/addZayvka</url-pattern>
+            <url-pattern>/agent_clientUsluga.xhtml</url-pattern>
+            <url-pattern>/clientDogovors.xhtml</url-pattern>
+            <url-pattern>/clientZayvka.xhtml</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>MyRealm</realm-name>
+        <form-login-config>
+            <form-login-page>/login.xhtml</form-login-page>
+            <form-error-page>/loginerror.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
+</web-app>
+
+
